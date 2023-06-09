@@ -4,6 +4,8 @@ function startsWithNumeral(s) {
 
 // Process the lines
 function processLines(lines) {
+  let setPoints = false;
+  let points;
 
   // Loop through the lines
   for (let i = 0; i < lines.length; i++) {
@@ -22,6 +24,12 @@ function processLines(lines) {
       let description = line.substring('Quiz description: '.length);
       document.getElementById('quiz-description').innerText = description;
       console.info('Saving quiz description:', description)
+    }
+    
+    // Store points for next question
+    if (line.startsWith('Points:')) {
+      points = line.substring('Points: '.length).trim();
+      setPoints = true;
     }
 
     // create a question
@@ -56,7 +64,14 @@ function processLines(lines) {
       questionPointsInput.id = 'questionPoints';
       questionPointsInput.name = 'questionPoints';
       questionPointsInput.placeholder = 'Points';
-      questionPointsInput.value = '1';
+      if (setPoints) {
+        questionPointsInput.value = points;
+        setPoints = false;
+      } else {
+        questionPointsInput.value = '1';
+
+      }
+
       rightAlign.appendChild(questionPointsInput);
 
       // question text
