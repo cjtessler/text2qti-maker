@@ -2,25 +2,6 @@ function startsWithNumeral(s) {
     return /^\d/.test(s);
 }
 
-/* MAIN */
-let lines = [];
-
-fetch('test.txt')
-  .then(response => response.text())
-  .then(data => {
-    // Split the data by newline and store it in the lines variable
-    lines = data.split('\n');
-
-    // Now the lines variable contains the lines of text
-    console.log(lines);
-
-    // Process the lines
-    processLines(lines);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
 // Process the lines
 function processLines(lines) {
 
@@ -96,10 +77,11 @@ function processLines(lines) {
       // add the question to the DOM
       let j = i + 1;
       let nextLine = lines[j];
-       
+      let type = 'choice';
+
       while (j < lines.length) {
         // Check if the next line is a new question
-        if (nextLine === '' || nextLine === '\r' || nextLine === '\n') { 
+        if (nextLine === '' || nextLine === '\r' || nextLine === '\n') {
           break;
         }
 
@@ -113,12 +95,27 @@ function processLines(lines) {
         checkbox.className = 'answerCorrect';
 
         // check if the option is multiple choice or selection
-
-        if (nextLine.startsWith('*')) {
-          checkbox.checked = true;
+        if (nextLine.startsWith('[')) {
+          type = 'selection';
         }
-        // move past the )
-        nextLine = nextLine.substring(nextLine.indexOf(') ') + 2);
+
+        if (type === 'selection') {
+          if (nextLine.startsWith('[*]')) {
+            checkbox.checked = true;
+          }
+          nextLine = nextLine.substring(nextLine.indexOf('] ') + 2);
+
+        } else {
+          if (nextLine.startsWith('*')) {
+            checkbox.checked = true;
+            nextLine = nextLine.substring(nextLine.indexOf(' ') + 1);
+          } else {
+            nextLine = nextLine.substring(nextLine.indexOf(') ') + 3);
+
+          }
+        }
+
+
 
         let optionText = document.createElement('input');
         optionText.type = 'text';
@@ -142,7 +139,24 @@ function processLines(lines) {
     }
 
   }
-
-
-
 }
+
+/* MAIN */
+let lines = [];
+
+fetch('test.txt')
+  .then(response => response.text())
+  .then(data => {
+    // Split the data by newline and store it in the lines variable
+    lines = data.split('\n');
+
+    // Now the lines variable contains the lines of text
+    console.log(lines);
+
+    // Process the lines
+    processLines(lines);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
