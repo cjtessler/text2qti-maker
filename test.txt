@@ -1,0 +1,19 @@
+Quiz title: Lesson 1 Practice Quiz
+Quiz description: TODO
+
+1.  How did Licklider and his team in the early 1960s experiment with a precursor to the Internet?
+*a) Connecting two computers over a dial-up telephone line
+a)  Building the HTTP protocol
+a)  Prototyping Network Control Protocol (NCP)
+a)  Creating the first web browser
+
+2.  What is 2+3?
+a)  6
+b)  1
+*c) 5
+
+3. Select all that apply.
+[ ] One
+[*] Two
+[ ] Three
+[*] Four

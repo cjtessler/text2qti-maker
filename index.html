@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>text2qti Maker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-title">
+    <label for="title">Quiz Title:</label>
+    <input type="text" id="quiz-title" placeholder="Quiz Title">
+  </div>
+  <div class="quiz-description">
+    <p>Quiz Description</p>
+    <textarea id="quiz-description">  </textarea>
+  </div>
+
+  <div class="quiz-questions">
+    <div class="question">
+      
+      <div class="questionInfo">
+        <label for="questionText">Question Text:</label>
+        <div class="rightAlign">
+          <label for="questionPoints">Question Points:</label>
+          <input type="number" name="questionPoints" id="questionPoints" placeholder="Points">
+        </div>
+        <textarea id="questionText"></textarea>
+      </div>
+
+      <div class="questionOptions">
+        <div class="options">
+          <div class="option">
+            <input type="checkbox" class="answerCorrect">
+            <input type="text" class="optionText" placeholder="Answer Text">
+          </div>
+          <div class="option">
+            <input type="checkbox" class="answerCorrect">
+            <input type="text" class="optionText" placeholder="Answer Text">
+          </div>
+          <div class="option">
+            <input type="checkbox" class="answerCorrect">
+            <input type="text" class="optionText" placeholder="Answer Text">
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+  <script  src="script.js"></script>
+</body>
+</html>
