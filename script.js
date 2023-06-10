@@ -34,7 +34,6 @@ function processLines(lines) {
 
     // create a question
     if (startsWithNumeral(line)) {
-      // create a question
       let question = document.createElement('div');
       question.className = 'question';
 
@@ -152,9 +151,84 @@ function processLines(lines) {
       question.appendChild(questionOptions);
       document.querySelector('.quiz-questions').appendChild(question);
     }
-
   }
 }
+
+/* EVENT LISTENERS */
+// Add a question
+document.getElementById('addQuestionButton').addEventListener('click', function () {
+  // create a question
+  let question = document.createElement('div');
+  question.className = 'question';
+
+  // question box
+  let questionInfo = document.createElement('div');
+  questionInfo.className = 'questionInfo';
+  question.appendChild(questionInfo);
+
+  // question text label
+  let questionTextLabel = document.createElement('label');
+  questionTextLabel.label = 'questionText';
+  questionTextLabel.innerText = 'Question Text:';
+  questionInfo.appendChild(questionTextLabel);
+
+  let rightAlign = document.createElement('div');
+  rightAlign.className = 'rightAlign';
+  questionInfo.appendChild(rightAlign);
+
+  // question points
+  let questionPoints = document.createElement('label');
+  questionPoints.label = 'questionPoints';
+  questionPoints.innerText = 'Points:';
+  rightAlign.appendChild(questionPoints);
+
+  let questionPointsInput = document.createElement('input');
+  questionPointsInput.type = 'number';
+  questionPointsInput.id = 'questionPoints';
+  questionPointsInput.name = 'questionPoints';
+  questionPointsInput.placeholder = 'Points';
+  questionPointsInput.value = '1';
+  rightAlign.appendChild(questionPointsInput);
+
+  // question text
+  let questionTextInput = document.createElement('textarea');
+  questionTextInput.id = 'questionText';
+  questionTextInput.name = 'questionText';
+  questionTextInput.placeholder = 'Question Text';
+  questionInfo.appendChild(questionTextInput);
+
+  // question options
+  let questionOptions = document.createElement('div');
+  questionOptions.className = 'questionOptions';
+  let options = document.createElement('div');
+  options.className = 'options';
+  questionOptions.appendChild(options);
+
+  // add the question to the DOM
+  document.querySelector('.quiz-questions').appendChild(question);
+
+  // add an option 4 times
+  for (let i = 0; i < 4; i++) {
+    let option = document.createElement('div');
+    option.className = 'option';
+
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'answerCorrect';
+
+    let optionText = document.createElement('input');
+    optionText.type = 'text';
+    optionText.className = 'optionText';
+    optionText.placeholder = 'Option Text';
+
+    option.appendChild(checkbox);
+    option.appendChild(optionText);
+    options.appendChild(option);
+  }
+
+  question.appendChild(questionOptions);
+
+});
 
 /* MAIN */
 let lines = [];

@@ -8,12 +8,7 @@ a)  Building the HTTP protocol
 a)  Prototyping Network Control Protocol (NCP)
 a)  Creating the first web browser
 
-2.  What is 2+3?
-a)  6
-b)  1
-*c) 5
-
-3.  Select all that apply.
+1.  Select all that apply.
 [ ] One
 [*] Two
 [ ] Three

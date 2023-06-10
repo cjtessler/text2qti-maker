@@ -17,18 +17,18 @@ h1 {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  padding: 10px 6px;
 
 }
 
 .questionInfo {
   font-size: 20px;
   font-weight: bold;
-  padding: 10px;
 
   > textarea {
     width: 100%;
     height: 100px;
-    padding: 10px;
+    margin: 10px 0;
   }
 
   #questionPoints {
@@ -43,6 +43,34 @@ h1 {
   
 }
 
+.questionOptions {
+  background-color: aliceblue;
+
+  .option {
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+
+    .optionText {
+      width: 100%;
+    }
+  }
+
+}
+
 .optionText {
   width: 90%;
+}
+
+.addQuestion {
+  margin: 10px;
+  padding: 10px 6px;
+}
+
+#addQuestionButton {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 50px;
+
 }
