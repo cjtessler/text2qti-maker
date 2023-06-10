@@ -8,9 +8,32 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  color:aqua
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 20px;
 }
+
+.navbar input[type="button"] {
+  font-size: 1em;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.navbar input[type="button"]:hover {
+  background-color: #45a049;
+}
+
 
 .question {
   border: 1px solid black;
@@ -40,7 +63,6 @@ h1 {
   > .rightAlign {
     float: right;
   }
-  
 }
 
 .questionOptions {
@@ -72,5 +94,4 @@ h1 {
   padding: 0;
   width: 100%;
   height: 50px;
-
 }

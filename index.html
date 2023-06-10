@@ -8,13 +8,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <input type="button" id="importQuizButton" value="Import Quiz">
+    <input type="button" id="exportQuizButton" value="Export Quiz">
+  </nav>
+
   <div class="quiz-title">
     <label for="title">Quiz Title:</label>
-    <input type="text" id="quiz-title" placeholder="Quiz Title">
+    <input type="text" id="quiz-title" placeholder="Quiz Title" value="Test">
   </div>
   <div class="quiz-description">
     <p>Quiz Description</p>
-    <textarea id="quiz-description">  </textarea>
+    <textarea id="quiz-description">This is a test description.</textarea>
   </div>
 
   <div class="quiz-questions">
@@ -24,24 +30,24 @@
         <label for="questionText">Question Text:</label>
         <div class="rightAlign">
           <label for="questionPoints">Question Points:</label>
-          <input type="number" name="questionPoints" id="questionPoints" placeholder="Points">
+          <input type="number" name="questionPoints" id="questionPoints" placeholder="Points" value="1">
         </div>
-        <textarea id="questionText"></textarea>
+        <textarea id="questionText">This is a test question.</textarea>
       </div>
 
       <div class="questionOptions">
         <div class="options">
           <div class="option">
             <input type="checkbox" class="answerCorrect">
-            <input type="text" class="optionText" placeholder="Answer Text">
+            <input type="text" class="optionText" placeholder="Answer Text" value="Test">
           </div>
           <div class="option">
             <input type="checkbox" class="answerCorrect">
-            <input type="text" class="optionText" placeholder="Answer Text">
+            <input type="text" class="optionText" placeholder="Answer Text" value="Test 2">
           </div>
           <div class="option">
             <input type="checkbox" class="answerCorrect">
-            <input type="text" class="optionText" placeholder="Answer Text">
+            <input type="text" class="optionText" placeholder="Answer Text" value="Test 3">
           </div>
 
         </div>

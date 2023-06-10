@@ -155,6 +155,70 @@ function processLines(lines) {
 }
 
 /* EVENT LISTENERS */
+
+// Import a quiz
+document.getElementById('importQuizButton').addEventListener('click', function () {
+ console.log('importing quiz')
+ let lines = [];
+
+  fetch('test.txt')
+    .then(response => response.text())
+    .then(data => {
+      // Split the data by newline and store it in the lines variable
+      lines = data.split('\n');
+
+      // Now the lines variable contains the lines of text
+      console.log(lines);
+
+      // Process the lines
+      processLines(lines);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
+
+// Export a quiz
+document.getElementById('exportQuizButton').addEventListener('click', function () {
+  console.log('exporting quiz')
+  let quizTitle = document.getElementById('quiz-title').value;
+  let quizDescription = document.getElementById('quiz-description').value;
+  let quizQuestions = document.querySelectorAll('.question');
+
+  let quiz = 'Quiz title: ' + quizTitle + '\n';
+  quiz += 'Quiz description: ' + quizDescription + '\n\n';
+
+  for (let i = 0; i < quizQuestions.length; i++) {
+    let question = quizQuestions[i];
+    let questionText = question.querySelector('#questionText').value;
+    let questionPoints = question.querySelector('#questionPoints').value;
+    let questionOptions = question.querySelectorAll('.option');
+
+    quiz += (i + 1) + ') ' + questionText + '\n';
+    quiz += 'Points: ' + questionPoints + '\n';
+
+    for (let j = 0; j < questionOptions.length; j++) {
+      let option = questionOptions[j];
+      let optionText = option.querySelector('.optionText').value;
+      let answerCorrect = option.querySelector('.answerCorrect').checked;
+
+      if (answerCorrect) {
+        quiz += '*a)\t';
+      } else {
+        quiz += 'a)\t';
+      }
+
+      quiz += optionText + '\n';
+    }
+
+    quiz += '\n';
+  }
+
+  console.log(quiz);
+
+});
+
+
 // Add a question
 document.getElementById('addQuestionButton').addEventListener('click', function () {
   // create a question
@@ -229,23 +293,4 @@ document.getElementById('addQuestionButton').addEventListener('click', function 
   question.appendChild(questionOptions);
 
 });
-
-/* MAIN */
-let lines = [];
-
-fetch('test.txt')
-  .then(response => response.text())
-  .then(data => {
-    // Split the data by newline and store it in the lines variable
-    lines = data.split('\n');
-
-    // Now the lines variable contains the lines of text
-    console.log(lines);
-
-    // Process the lines
-    processLines(lines);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
 
